@@ -1,0 +1,43 @@
+[gd_scene load_steps=7 format=3 uid="uid://crafcsts2p30q"]
+
+[ext_resource type="Script" path="res://Scripts/BulletScripts/player_shotgun_bullet.gd" id="1_dubgt"]
+[ext_resource type="Texture2D" uid="uid://dy7im1dbbtswl" path="res://Sprites/Bullets/PlayerBullets/player_bullet_shotgun.png" id="2_rr2g1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h0psp"]
+size = Vector2(34, 24)
+
+[sub_resource type="Curve" id="Curve_vhabn"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_oulmq"]
+curve = SubResource("Curve_vhabn")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_d0swq"]
+particle_flag_disable_z = true
+spread = 180.0
+initial_velocity_min = -25.0
+initial_velocity_max = -25.0
+gravity = Vector3(0, 0, 0)
+scale_max = 5.0
+scale_curve = SubResource("CurveTexture_oulmq")
+color = Color(0.905882, 0.717647, 0.745098, 1)
+
+[node name="player_shotgun_bullet" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 4
+script = ExtResource("1_dubgt")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("2_rr2g1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_h0psp")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+position = Vector2(-17, 0)
+amount = 50
+process_material = SubResource("ParticleProcessMaterial_d0swq")
+
+[node name="DeathTimer" type="Timer" parent="."]

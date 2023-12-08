@@ -1,0 +1,69 @@
+[gd_scene load_steps=12 format=3 uid="uid://cx8s4erg5vn1s"]
+
+[ext_resource type="Texture2D" uid="uid://20y0fkrn1co" path="res://Sprites/PlayerSprites/ParryEffects/Alternative 1 Purple/Alternative 1/4/Alternative_1_19.png" id="1_b1poh"]
+[ext_resource type="Texture2D" uid="uid://dvkn88mwotkdp" path="res://Sprites/PlayerSprites/ParryEffects/Alternative 1 Purple/Alternative 1/4/Alternative_1_21.png" id="1_o0rrk"]
+[ext_resource type="Script" path="res://Scripts/PlayerScripts/Parrys/parry_slash.gd" id="2_5f3kv"]
+[ext_resource type="Texture2D" uid="uid://cot4woolfaik5" path="res://Sprites/PlayerSprites/ParryEffects/Alternative 1 Purple/Alternative 1/4/Alternative_1_20.png" id="2_7gxme"]
+[ext_resource type="Texture2D" uid="uid://bgu76mvm076ke" path="res://Sprites/PlayerSprites/ParryEffects/Alternative 1 Purple/Alternative 1/4/Alternative_1_22.png" id="4_odowe"]
+[ext_resource type="Texture2D" uid="uid://dvfud30drx3pc" path="res://Sprites/PlayerSprites/ParryEffects/Alternative 1 Purple/Alternative 1/4/Alternative_1_23.png" id="5_l4wuh"]
+[ext_resource type="Texture2D" uid="uid://bhd6p8chb4pix" path="res://Sprites/PlayerSprites/ParryEffects/Alternative 1 Purple/Alternative 1/4/Alternative_1_24.png" id="6_hm5ho"]
+
+[sub_resource type="Animation" id="Animation_1p03h"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_b1poh")]
+}
+
+[sub_resource type="Animation" id="Animation_dcgge"]
+resource_name = "parry"
+length = 0.166668
+step = 0.0166667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.0666667, 0.1, 0.133333, 0.166667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("1_b1poh"), ExtResource("2_7gxme"), ExtResource("1_o0rrk"), ExtResource("4_odowe"), ExtResource("5_l4wuh"), ExtResource("6_hm5ho")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0l8sy"]
+_data = {
+"RESET": SubResource("Animation_1p03h"),
+"parry": SubResource("Animation_dcgge")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j3s5k"]
+size = Vector2(40, 83.1111)
+
+[node name="Parry_Slash" type="Sprite2D"]
+texture_filter = 1
+scale = Vector2(2.25, 2.25)
+texture = ExtResource("1_b1poh")
+script = ExtResource("2_5f3kv")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_0l8sy")
+}
+
+[node name="HitBox" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+position = Vector2(4.44444, 4.22222)
+shape = SubResource("RectangleShape2D_j3s5k")

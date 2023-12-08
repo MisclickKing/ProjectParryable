@@ -1,0 +1,16 @@
+res://Scripts/BackgroundScripts
+res://Scripts/PlayerScripts/Parrys
+res://Objects/ParryObjects
+res://Scripts/PlayerScripts/SpecialAbilitiesScript
+res://Objects/SpecialAbilities
+res://Scripts/BulletScripts
+res://Objects/BulletObjects/PlayerBulletObjects
+res://Scripts/PlayerScripts/Dashes
+res://Scripts/PlayerScripts
+res://Shaders/CRT_Shaders
+res://Objects/BulletObjects
+res://Scripts/EnemyScripts
+res://
+res://Scenes
+res://Objects/PlayerObjects
+res://Shaders

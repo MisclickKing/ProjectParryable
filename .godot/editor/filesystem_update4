@@ -1,0 +1,8 @@
+res://Scenes/main_scene.tscn
+res://Shaders/CRT_Shaders/crt_shader2.gdshader
+res://Shaders/CRT_Shaders/crt_shader.gdshader
+res://Scenes/stage_1.tscn
+res://Objects/PlayerObjects/player_controller.tscn
+res://Objects/ParryObjects/parry_slash.tscn
+res://Objects/BulletObjects/PlayerBulletObjects/player_normal_bullet.tscn
+res://Objects/SpecialAbilities/missile.tscn

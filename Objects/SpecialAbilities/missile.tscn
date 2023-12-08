@@ -1,0 +1,65 @@
+[gd_scene load_steps=9 format=3 uid="uid://dghnsjt45n4ux"]
+
+[ext_resource type="Script" path="res://Scripts/PlayerScripts/SpecialAbilitiesScript/missile.gd" id="1_12ecr"]
+[ext_resource type="Texture2D" uid="uid://caskmefgoeqcu" path="res://Sprites/PlayerSprites/SpecialAbilities/player_special_missiles.png" id="1_x40w1"]
+
+[sub_resource type="Gradient" id="Gradient_2vt6i"]
+offsets = PackedFloat32Array(0, 0.533333, 1)
+colors = PackedColorArray(0.669716, 0.26375, 0, 1, 1, 0.748374, 0.250092, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_06bjw"]
+gradient = SubResource("Gradient_2vt6i")
+
+[sub_resource type="Curve" id="Curve_uo5km"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_k15ov"]
+curve = SubResource("Curve_uo5km")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_8ibkd"]
+particle_flag_disable_z = true
+gravity = Vector3(-75, 0, 0)
+scale_min = 2.0
+scale_max = 3.0
+scale_curve = SubResource("CurveTexture_k15ov")
+color_ramp = SubResource("GradientTexture1D_06bjw")
+turbulence_enabled = true
+turbulence_noise_strength = 8.06
+turbulence_noise_scale = 0.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_s0uwi"]
+radius = 9.0
+height = 52.0
+
+[node name="Missile" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 4
+script = ExtResource("1_12ecr")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+position = Vector2(-28, 0)
+amount = 50
+process_material = SubResource("ParticleProcessMaterial_8ibkd")
+
+[node name="GPUParticles2D2" type="GPUParticles2D" parent="."]
+position = Vector2(-26, -3)
+amount = 50
+process_material = SubResource("ParticleProcessMaterial_8ibkd")
+
+[node name="GPUParticles2D3" type="GPUParticles2D" parent="."]
+position = Vector2(-26, 3)
+amount = 50
+process_material = SubResource("ParticleProcessMaterial_8ibkd")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+rotation = 1.5708
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("1_x40w1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_s0uwi")
+
+[node name="DeathTimer" type="Timer" parent="."]

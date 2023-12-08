@@ -1,0 +1,69 @@
+[gd_scene load_steps=9 format=3 uid="uid://cl85ejtash6bg"]
+
+[ext_resource type="Script" path="res://Scripts/PlayerScripts/Controls/player_controller.gd" id="1_k7yrl"]
+[ext_resource type="Texture2D" uid="uid://olwi41jitixk" path="res://Sprites/PlayerSprites/Player/PlayerMech1.png" id="2_fn8vv"]
+[ext_resource type="Texture2D" uid="uid://bf5w1fle50sog" path="res://Sprites/kenney_crosshair-pack/PNG/Outline Retina/crosshair037.png" id="3_ay5hl"]
+[ext_resource type="Script" path="res://Scripts/PlayerScripts/Dashes/attack_normal.gd" id="4_v8kx2"]
+[ext_resource type="Script" path="res://Scripts/PlayerScripts/Dashes/dash_normal.gd" id="4_v12yd"]
+[ext_resource type="Script" path="res://Scripts/PlayerScripts/SpecialAbilitiesScript/shield.gd" id="5_qqtqh"]
+[ext_resource type="Script" path="res://Scripts/PlayerScripts/Parrys/parry.gd" id="6_dcvnk"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g05d2"]
+size = Vector2(87.5, 218.75)
+
+[node name="Player" type="CharacterBody2D"]
+collision_mask = 12
+script = ExtResource("1_k7yrl")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("2_fn8vv")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite2D"]
+
+[node name="CollisionBox" type="CollisionShape2D" parent="."]
+position = Vector2(11, 7.5)
+scale = Vector2(0.8, 0.8)
+shape = SubResource("RectangleShape2D_g05d2")
+debug_color = Color(0.611765, 0.529412, 0.262745, 0.419608)
+
+[node name="Marker2D" type="Marker2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Marker2D"]
+modulate = Color(1, 1, 1, 0.568627)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_ay5hl")
+
+[node name="Dash_Normal" type="Node" parent="."]
+script = ExtResource("4_v12yd")
+
+[node name="DurationTimer" type="Timer" parent="Dash_Normal"]
+one_shot = true
+
+[node name="Attack" type="Node" parent="."]
+script = ExtResource("4_v8kx2")
+
+[node name="DurationTimer" type="Timer" parent="Attack"]
+one_shot = true
+
+[node name="Parry" type="Node" parent="."]
+script = ExtResource("6_dcvnk")
+
+[node name="DurationTimer" type="Timer" parent="Parry"]
+one_shot = true
+
+[node name="Shield" type="Node" parent="."]
+script = ExtResource("5_qqtqh")
+
+[node name="DurationTimer" type="Timer" parent="Shield"]
+one_shot = true
+
+[node name="Missiles" type="Node" parent="."]
+
+[node name="DurationTimer" type="Timer" parent="Missiles"]
+
+[connection signal="timeout" from="Dash_Normal/DurationTimer" to="Dash_Normal" method="_on_duration_timer_timeout"]
+[connection signal="timeout" from="Attack/DurationTimer" to="Attack" method="_on_duration_timer_timeout"]
+[connection signal="timeout" from="Parry/DurationTimer" to="Parry" method="_on_duration_timer_timeout"]
+[connection signal="timeout" from="Shield/DurationTimer" to="Shield" method="_on_duration_timer_timeout"]

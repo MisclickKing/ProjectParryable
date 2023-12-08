@@ -1,0 +1,14 @@
+CollisionShape2D
+Sprite2D
+CharacterBody2D
+ParallaxLayer
+ParallaxBackground
+Node2D
+Node
+AnimationPlayer
+Area2D
+Timer
+CollisionPolygon2D
+GPUParticles2D
+Marker2D
+StaticBody2D

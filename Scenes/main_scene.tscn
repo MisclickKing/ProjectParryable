@@ -1,0 +1,51 @@
+[gd_scene load_steps=6 format=3 uid="uid://vqkwyb2swb3n"]
+
+[ext_resource type="Texture2D" uid="uid://qle3x16mgya6" path="res://A_black_image.jpg" id="1_vgtea"]
+[ext_resource type="Shader" path="res://Shaders/CRT_Shaders/crt_shader2.gdshader" id="2_lkiih"]
+[ext_resource type="PackedScene" uid="uid://drgm6yiw1fty7" path="res://Scenes/stage_1.tscn" id="3_to2pe"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hay3l"]
+shader = ExtResource("2_lkiih")
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_siy02"]
+
+[node name="MainScene" type="Node"]
+
+[node name="Pillerboxes" type="TextureRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 0
+texture = ExtResource("1_vgtea")
+expand_mode = 1
+
+[node name="CRT_Texture" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="TextureRect" type="TextureRect" parent="CRT_Texture"]
+material = SubResource("ShaderMaterial_hay3l")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("CanvasTexture_siy02")
+
+[node name="Resolution" type="SubViewportContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 240.0
+offset_right = 240.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.75, 1)
+
+[node name="Viewport" type="SubViewport" parent="Resolution"]
+handle_input_locally = false
+size = Vector2i(1920, 1080)
+render_target_update_mode = 4
+
+[node name="Stage_1" parent="Resolution/Viewport" instance=ExtResource("3_to2pe")]

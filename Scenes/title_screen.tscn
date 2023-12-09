@@ -32,4 +32,18 @@ position = Vector2(636, 192)
 scale = Vector2(1.45887, 2.51316)
 texture = ExtResource("3_dcrls")
 
+[node name="TextEdit" type="TextEdit" parent="."]
+layout_mode = 0
+offset_left = 1538.0
+offset_top = 203.0
+offset_right = 1828.0
+offset_bottom = 370.0
+text = "R2 - Shoot
+R1 - Parry
+L1- Shield
+Circle - Dodge
+Triangle - Change Ammo Type
+Left Stick to move
+Right Stick to aim"
+
 [connection signal="pressed" from="StartButton" to="StartButton" method="_on_pressed"]

@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 # Player Character Variables
-const STARTING_HEALTH = 5
+const STARTING_HEALTH = 3
 var current_health = STARTING_HEALTH
 
 const SPEED = 850.0
@@ -210,6 +210,10 @@ func special_2():
 		if player_parry.can_parry != false:
 			pass
 
+func die():
+	if current_health <= 0:
+		queue_free()
+		get_tree().change_scene_to_file("res://Scenes/lose_screen.tscn")
 
 # Called every acive frame
 func _physics_process(delta):
@@ -229,3 +233,9 @@ func _physics_process(delta):
 	special_2()
 	
 	player_borders()
+	print(current_health)
+
+
+func _on_hurt_box_area_entered(area):
+	if(area.name == "BossHurtBox"):
+		current_health -= 1

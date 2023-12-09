@@ -1,3 +1,5 @@
+res://Scenes
+res://Scripts/BulletScripts
 res://Objects/BulletObjects/EnemyBulletObjects
 res://Scripts/StageScripts
 res://Objects/PlayerObjects
@@ -8,12 +10,10 @@ res://Scripts/PlayerScripts/Parrys
 res://Objects/ParryObjects
 res://Scripts/PlayerScripts/SpecialAbilitiesScript
 res://Objects/SpecialAbilities
-res://Scripts/BulletScripts
 res://Objects/BulletObjects/PlayerBulletObjects
 res://Scripts/PlayerScripts/Dashes
 res://Scripts/PlayerScripts
 res://Shaders/CRT_Shaders
 res://Objects/BulletObjects
 res://
-res://Scenes
 res://Shaders

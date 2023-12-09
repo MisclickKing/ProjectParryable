@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://cs70fhrsdmmiy"]
+
+[ext_resource type="Texture2D" uid="uid://77fjg8f717jx" path="res://Sprites/d56l1ha-07fa8eb1-b676-4fa0-8945-45adac1b8e72.jpg" id="1_iuqgd"]
+[ext_resource type="Script" path="res://StartButton.gd" id="2_eorjv"]
+[ext_resource type="Texture2D" uid="uid://bmpxwamtcfdnr" path="res://Sprites/generatedtext (1).png" id="3_c6nqf"]
+
+[node name="Win Screen" type="Node"]
+
+[node name="D56l1Ha-07Fa8Eb1-b676-4Fa0-8945-45Adac1b8e72" type="Sprite2D" parent="."]
+self_modulate = Color(1, 1, 1, 0.619608)
+position = Vector2(960, 536.5)
+scale = Vector2(1.67474, 1.47035)
+texture = ExtResource("1_iuqgd")
+
+[node name="StartButton" type="Button" parent="."]
+offset_left = 293.0
+offset_top = 859.0
+offset_right = 658.0
+offset_bottom = 1017.0
+text = "Play Again?"
+script = ExtResource("2_eorjv")
+metadata/_edit_use_anchors_ = true
+
+[node name="Generatedtext(1)" type="Sprite2D" parent="."]
+position = Vector2(1418, 185)
+scale = Vector2(2.31818, 2.74675)
+texture = ExtResource("3_c6nqf")
+
+[connection signal="pressed" from="StartButton" to="StartButton" method="_on_pressed"]

@@ -10,3 +10,13 @@ res://Objects/BulletObjects/PlayerBulletObjects/player_shotgun_bullet.tscn
 res://Objects/SpecialAbilities/shield.tscn
 res://Scripts/StageScripts/stage_1.gd
 res://Scripts/PlayerScripts/Controls/player_controller.gd
+res://Objects/BulletObjects/EnemyBulletObjects/enemy_bullet.tscn
+res://Objects/BulletObjects/EnemyBulletObjects/enemy_bullet_parrayable.tscn
+res://Scripts/BulletScripts/enemy_bullet.gd
+res://Scripts/PlayerScripts/SpecialAbilitiesScript/shield_rotation.gd
+res://Scripts/BulletScripts/player_normal_bullet.gd
+res://Scripts/BulletScripts/enemy_bullet_parrayable.gd
+res://StartButton.gd
+res://Scenes/title_screen.tscn
+res://Scenes/lose_screen.tscn
+res://Scenes/win_screen.tscn

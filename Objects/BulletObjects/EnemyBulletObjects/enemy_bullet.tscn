@@ -1,5 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://bkp87uavg7cdb"]
+[gd_scene load_steps=5 format=3 uid="uid://bkp87uavg7cdb"]
 
+[ext_resource type="Script" path="res://Scripts/BulletScripts/enemy_bullet.gd" id="1_j6b2p"]
 [ext_resource type="Texture2D" uid="uid://bjo630ksu02nq" path="res://Sprites/Bullets/EnemyBullets/enemy_bullet.png" id="1_j7als"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_lwec1"]
@@ -10,6 +11,7 @@ radius = 14.4
 
 [node name="EnemyBullet" type="CharacterBody2D"]
 scale = Vector2(1.25, 1.25)
+script = ExtResource("1_j6b2p")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
@@ -18,7 +20,11 @@ texture = ExtResource("1_j7als")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_lwec1")
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="EnemyBulletHitBox" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyBulletHitBox"]
 shape = SubResource("CircleShape2D_6kyl0")
+
+[node name="DeathTimer" type="Timer" parent="."]

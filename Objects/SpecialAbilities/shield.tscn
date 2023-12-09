@@ -15,6 +15,10 @@ texture = ExtResource("2_8sga8")
 
 [node name="Hurtbox" type="Area2D" parent="."]
 scale = Vector2(0.8, 0.8)
+collision_layer = 0
+collision_mask = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
 shape = SubResource("CircleShape2D_2u6sm")
+
+[connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]

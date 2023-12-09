@@ -25,8 +25,8 @@ scale_curve = SubResource("CurveTexture_hhigy")
 color = Color(0.788235, 1, 0.964706, 1)
 
 [node name="Player_Normal_Bullet" type="CharacterBody2D"]
-collision_layer = 2
-collision_mask = 4
+collision_layer = 0
+collision_mask = 0
 script = ExtResource("1_4ohk3")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -35,6 +35,15 @@ scale = Vector2(0.7, 0.7)
 texture = ExtResource("1_ye6mx")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, 2.04841e-06)
+rotation = 1.5708
+shape = SubResource("RectangleShape2D_iimb6")
+
+[node name="PlayerBulletHitBox" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerBulletHitBox"]
 position = Vector2(0.5, 2.04841e-06)
 rotation = 1.5708
 shape = SubResource("RectangleShape2D_iimb6")

@@ -1,6 +1,9 @@
 extends CharacterBody2D
 
 # Player Character Variables
+const STARTING_HEALTH = 5
+var current_health = STARTING_HEALTH
+
 const SPEED = 850.0
 const DASH_SPEED = 2500.0
 
@@ -79,8 +82,12 @@ func player_borders():
 func flip_sprite():
 	if look_direction >= -90 and look_direction <= 90:
 		player_sprite.set_flip_h(true)
+		$CollisionBox.position.x = 0
+		$HurtBox/CollisionBox.position.x = 0
 	else:
 		player_sprite.set_flip_h(false)
+		$CollisionBox.position.x = 0
+		$HurtBox/CollisionBox.position.x = 0
 
 
 # Moves player crosshair and determines where the player's bullets go

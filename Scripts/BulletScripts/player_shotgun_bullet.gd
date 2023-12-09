@@ -5,6 +5,8 @@ const TIME_TO_LIVE = 0.35
 
 var direction
 
+var damage = 7
+
 @onready var time_to_die = $DeathTimer
 
 # Called when the node enters the scene tree for the first time.

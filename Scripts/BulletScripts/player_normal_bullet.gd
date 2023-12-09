@@ -6,11 +6,13 @@ const TIME_TO_LIVE = 0.85
 
 var direction
 
+var damage = 5
+
 @onready var time_to_die = $DeathTimer
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	look_at(position)
+	look_at(position + direction)
 	time_to_die.wait_time = TIME_TO_LIVE
 	time_to_die.start()
 

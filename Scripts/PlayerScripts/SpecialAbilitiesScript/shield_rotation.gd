@@ -10,6 +10,11 @@ func rotate_shield():
 	if(value == 360):
 		value = -360
 
+
+func _on_hurtbox_area_entered(area):
+	pass # Replace with function body.
+
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	rotate_shield()

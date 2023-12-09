@@ -1,0 +1,41 @@
+[gd_scene load_steps=5 format=3 uid="uid://b365obgjfy1fi"]
+
+[ext_resource type="Script" path="res://Scripts/EnemyScripts/mecha_boss.gd" id="1_bvcki"]
+[ext_resource type="Texture2D" uid="uid://d2cwkgxhgp07t" path="res://Sprites/EnemySprites/enemy_mech.png" id="1_en5la"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a7naq"]
+size = Vector2(307.692, 559)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lnxct"]
+size = Vector2(307.692, 559)
+
+[node name="MechaBoss" type="CharacterBody2D"]
+scale = Vector2(0.65, 0.65)
+collision_layer = 4
+collision_mask = 3
+script = ExtResource("1_bvcki")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_en5la")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(58.4616, 0)
+shape = SubResource("RectangleShape2D_a7naq")
+
+[node name="HurtBox" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+position = Vector2(58.4616, 0)
+shape = SubResource("RectangleShape2D_lnxct")
+
+[node name="WaitTimer" type="Timer" parent="."]
+
+[node name="Attack1" type="Node" parent="."]
+
+[node name="Attack2" type="Node" parent="."]
+
+[node name="Beam" type="Node" parent="."]
+
+[connection signal="area_entered" from="HurtBox" to="." method="_on_area_2d_area_entered"]

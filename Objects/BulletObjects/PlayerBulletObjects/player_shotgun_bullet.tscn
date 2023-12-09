@@ -3,8 +3,8 @@
 [ext_resource type="Script" path="res://Scripts/BulletScripts/player_shotgun_bullet.gd" id="1_dubgt"]
 [ext_resource type="Texture2D" uid="uid://dy7im1dbbtswl" path="res://Sprites/Bullets/PlayerBullets/player_bullet_shotgun.png" id="2_rr2g1"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_h0psp"]
-size = Vector2(34, 24)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_chgco"]
+size = Vector2(16, 33)
 
 [sub_resource type="Curve" id="Curve_vhabn"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -24,8 +24,8 @@ scale_curve = SubResource("CurveTexture_oulmq")
 color = Color(0.905882, 0.717647, 0.745098, 1)
 
 [node name="player_shotgun_bullet" type="CharacterBody2D"]
-collision_layer = 2
-collision_mask = 4
+collision_layer = 0
+collision_mask = 0
 script = ExtResource("1_dubgt")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -33,7 +33,18 @@ texture_filter = 1
 texture = ExtResource("2_rr2g1")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_h0psp")
+position = Vector2(0.5, 2.04841e-06)
+rotation = 1.5708
+shape = SubResource("RectangleShape2D_chgco")
+
+[node name="PlayerBulletHitBox" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerBulletHitBox"]
+position = Vector2(0.5, 2.04841e-06)
+rotation = 1.5708
+shape = SubResource("RectangleShape2D_chgco")
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
 position = Vector2(-17, 0)

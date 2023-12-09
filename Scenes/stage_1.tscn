@@ -1,17 +1,16 @@
 [gd_scene load_steps=9 format=3 uid="uid://drgm6yiw1fty7"]
 
 [ext_resource type="Script" path="res://Scripts/BackgroundScripts/IndustralMap.gd" id="1_6f1w8"]
+[ext_resource type="Script" path="res://Scripts/StageScripts/stage_1.gd" id="1_fos2w"]
 [ext_resource type="PackedScene" uid="uid://cl85ejtash6bg" path="res://Objects/PlayerObjects/player_controller.tscn" id="1_h6wse"]
 [ext_resource type="Texture2D" uid="uid://pef5mpavokgo" path="res://Sprites/Backgrounds/parallax-industrial-pack/layers/skill-desc_0003_bg.png" id="1_w0ksx"]
 [ext_resource type="Texture2D" uid="uid://c887l8g0wkyxj" path="res://Sprites/Backgrounds/parallax-industrial-pack/layers/skill-desc_0002_far-buildings.png" id="2_s7evp"]
 [ext_resource type="Texture2D" uid="uid://bc0fv1g1gvoi2" path="res://Sprites/Backgrounds/parallax-industrial-pack/layers/skill-desc_0001_buildings.png" id="3_k3j8d"]
 [ext_resource type="Texture2D" uid="uid://bohdxhmwex58s" path="res://Sprites/Backgrounds/parallax-industrial-pack/layers/skill-desc_0000_foreground.png" id="4_1dnsd"]
-[ext_resource type="Texture2D" uid="uid://d2cwkgxhgp07t" path="res://Sprites/EnemySprites/enemy_mech.png" id="7_obnyg"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_a7naq"]
-size = Vector2(296, 559)
+[ext_resource type="PackedScene" uid="uid://b365obgjfy1fi" path="res://Objects/EnemyObjects/mecha_boss.tscn" id="7_4dnvm"]
 
 [node name="Stage_1" type="Node"]
+script = ExtResource("1_fos2w")
 
 [node name="StageBackground" type="Node2D" parent="."]
 
@@ -19,13 +18,12 @@ size = Vector2(296, 559)
 script = ExtResource("1_6f1w8")
 
 [node name="Sky" type="ParallaxLayer" parent="StageBackground/IndustralMap"]
-position = Vector2(54, 81)
 motion_scale = Vector2(0.1, 0.1)
 motion_mirroring = Vector2(1920, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="StageBackground/IndustralMap/Sky"]
 texture_filter = 1
-position = Vector2(1022, 459)
+position = Vector2(1076, 540)
 scale = Vector2(7.91176, 6.75)
 texture = ExtResource("1_w0ksx")
 
@@ -58,15 +56,5 @@ texture = ExtResource("4_1dnsd")
 [node name="PlayerController" parent="." instance=ExtResource("1_h6wse")]
 position = Vector2(408, 549)
 
-[node name="MechaBoss" type="CharacterBody2D" parent="."]
-position = Vector2(1091, 578)
-scale = Vector2(0.65, 0.65)
-collision_layer = 4
-collision_mask = 3
-
-[node name="Sprite2D" type="Sprite2D" parent="MechaBoss"]
-texture = ExtResource("7_obnyg")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="MechaBoss"]
-position = Vector2(63, 19.5)
-shape = SubResource("RectangleShape2D_a7naq")
+[node name="MechaBoss" parent="." instance=ExtResource("7_4dnvm")]
+position = Vector2(1082, 555)
